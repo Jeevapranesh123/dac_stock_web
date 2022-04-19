@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+
+  flask:
+    build: ./flask
+    container_name: flask
+    hostname: flask
+    networks:
+      - backend
+
+  nginx:
+    # image: jeevax123/flask:nginx
+    build: ./nginx
+    container_name: nginx
+    hostname: nginx
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - backend
+
+networks:
+  backend:
